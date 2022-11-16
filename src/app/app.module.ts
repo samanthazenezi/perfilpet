@@ -3,10 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { StartComponent } from './pages/start/start.component';
+import { LoginComponent } from './pages/login/login.component';
+import { CadastrarloginComponent } from './pages/cadastrarlogin/cadastrarlogin.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
+import { CadastrarpetComponent } from './pages/cadastrarpet/cadastrarpet.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StartComponent,
+    LoginComponent,
+    CadastrarloginComponent,
+    PerfilComponent,
+    CadastrarpetComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
