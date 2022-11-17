@@ -8,6 +8,7 @@ import { CadastrarloginComponent } from './pages/cadastrarlogin/cadastrarlogin.c
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { CadastrarpetComponent } from './pages/cadastrarpet/cadastrarpet.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MenuComponent } from './components/menu/menu.component';
     CadastrarloginComponent,
     PerfilComponent,
     CadastrarpetComponent,
-    MenuComponent
+    MenuComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
