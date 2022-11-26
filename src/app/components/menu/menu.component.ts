@@ -12,4 +12,8 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openClose(){
+    document.getElementById('dropdown').classList.toggle('visivel')
+  }
+
 }

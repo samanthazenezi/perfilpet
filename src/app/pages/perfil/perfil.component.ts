@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Perfil } from 'src/app/model/perfil.model';
 
 @Component({
@@ -18,44 +18,81 @@ export class PerfilComponent implements OnInit {
     nome: new FormControl('', [Validators.required]),
     especie: new FormControl('', [Validators.required]),
     genero: new FormControl('', [Validators.required]),
-    raca: new FormControl('', [Validators.required]),
-    dataNasc: new FormControl('', [Validators.required]),
+    raça: new FormControl('', [Validators.required]),
+    dataNascimento: new FormControl('', [Validators.required]),
     idade: new FormControl('', [Validators.required]),
     porte: new FormControl('', [Validators.required]),
     cor: new FormControl('', [Validators.required]),
-    castrado: new FormControl('', [Validators.required])
+    sim: new FormControl('', [Validators.required]),
+    não: new FormControl('', [Validators.required])
+
   });
 
-  constructor(private http: HttpClient, private  route: ActivatedRoute) { }
+  id = this.route.snapshot.paramMap.get("id")
+
+  constructor(
+    private http: HttpClient, 
+    private  route: ActivatedRoute, 
+    private router: Router) { }
 
   ngOnInit(): void {
-    let id = this.route.snapshot.paramMap.get("id");
 
-    this.http.get<Perfil>('https://pet-api-5wpg.onrender.com/api/Pet/' + id).subscribe( 
+    this.http.get<Perfil>('https://pet-api-5wpg.onrender.com/api/Pet/' + this.id).subscribe( 
       response => {
         this.perfil = response;
 
         this.formPerfil.controls.nome.setValue(this.perfil.nome);
         this.formPerfil.controls.cor.setValue(this.perfil.cor);
-        this.formPerfil.controls.dataNasc.setValue(this.perfil.dataNascimento);
+        this.formPerfil.controls.dataNascimento.setValue(this.perfil.dataNascimento);
         this.formPerfil.controls.especie.setValue(this.perfil.especie);
         this.formPerfil.controls.genero.setValue(this.perfil.genero);
         this.formPerfil.controls.porte.setValue(this.perfil.porte);
-        this.formPerfil.controls.raca.setValue(this.perfil.raça);
+        this.formPerfil.controls.raça.setValue(this.perfil.raça);
 
         if(this.perfil.castrado == true) {
-          this.formPerfil.controls.castrado.setValue("Sim")
+          this.formPerfil.controls.sim.setValue("Sim")
         } 
         else {
-          this.formPerfil.controls.castrado.setValue("Não")
+          this.formPerfil.controls.não.setValue("Não")
         }
 
         this.formPerfil.disable();
       }
 
     )
-  
 
   }
 
+  deletar(){
+    this.http.delete('https://pet-api-5wpg.onrender.com/api/Pet/' + this.id).subscribe(
+      sucesso =>{
+      this.router.navigateByUrl('home')
+      console.log('sucesso!')},
+      erro => {console.log('erro!')}
+    )
+  }
+
+  abrirEdicao(){
+    this.formPerfil.enable();
+
+  }
+
+  cancelarEdicao(){
+    this.formPerfil.disable();
+  }
+
+  editar(){
+
+    this.http.put<Perfil>('https://pet-api-5wpg.onrender.com/api/Pet/' + this.id, this.formPerfil.value).subscribe(
+      sucesso => {
+        console.log('sucesso');
+        window.location.reload();
+      }, erro => { console.log('erro')}
+    )
+  }
+
+
+  openClose(){
+    document.getElementById('modal').classList.toggle('visivel')
+  }
 }

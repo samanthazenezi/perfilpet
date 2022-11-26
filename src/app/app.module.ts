@@ -11,6 +11,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditarComponent } from './pages/editar/editar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PerfilComponent,
     CadastrarpetComponent,
     MenuComponent,
-    HomeComponent
+    HomeComponent,
+    EditarComponent
   ],
   imports: [
     BrowserModule,

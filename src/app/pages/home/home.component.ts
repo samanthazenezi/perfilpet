@@ -26,8 +26,4 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  openClose(){
-    document.getElementById('dropdown').classList.toggle('visivel');
-  }
-
 }

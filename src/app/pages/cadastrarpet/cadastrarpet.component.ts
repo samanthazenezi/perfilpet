@@ -51,6 +51,7 @@ export class CadastrarpetComponent implements OnInit {
     }
 
     this.http.post('https://pet-api-5wpg.onrender.com/api/Pet', body).subscribe( sucess => {
+      this.formCadastroPet.reset();
       console.log('Sucesso!')
     }, error => {
       console.log('Erro!')
