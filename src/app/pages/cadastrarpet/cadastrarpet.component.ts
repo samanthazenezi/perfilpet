@@ -2,7 +2,8 @@ import { CadastrarPet } from './../../model/cadastrarpet.model';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { Perfil } from 'src/app/model/perfil.model';
+
 
 @Component({
   selector: 'app-cadastrarpet',
@@ -24,11 +25,13 @@ export class CadastrarpetComponent implements OnInit {
     nao: new FormControl('', [Validators.required])
   });
 
+  file = null;
+
   constructor( private http: HttpClient ) { }
 
   ngOnInit(): void {
   }
-  
+
 
   salvar(){
     let body = new CadastrarPet;
@@ -41,7 +44,7 @@ export class CadastrarpetComponent implements OnInit {
     body.porte = this.formCadastroPet.controls.porte.value;
     body.cor = this.formCadastroPet.controls.cor.value;
     body.especie = this.formCadastroPet.controls.especie.value;
-    
+
 
     if(this.formCadastroPet.controls.sim.value){
       body.castrado = true
@@ -50,12 +53,35 @@ export class CadastrarpetComponent implements OnInit {
       body.castrado = false
     }
 
-    this.http.post('https://pet-api-5wpg.onrender.com/api/Pet', body).subscribe( sucess => {
+    this.http.post<Perfil>('https://pet-api-5wpg.onrender.com/api/Pet', body).subscribe( sucess => {
+      this.uploadImagem(sucess.id);
       this.formCadastroPet.reset();
       console.log('Sucesso!')
     }, error => {
       console.log('Erro!')
     })
 
+  }
+
+  showPreview(event: any){
+    if(event.target.files.length > 0){
+      var src = URL.createObjectURL(event.target.files[0]);
+      var preview = document.getElementById("file") as HTMLImageElement;
+      preview.src = src;
+
+      this.file = event.target.files[0];
+    }
+  }
+
+  uploadImagem(id){
+
+    const formData = new FormData();
+
+    formData.append("file", this.file)
+
+    this.http.post('https://pet-api-5wpg.onrender.com/api/Pet/' + id + "/upload", formData).subscribe(
+      sucesso => { console.log("Sucesso!")},
+      erro => { console.log("Erroo!")}
+    )
   }
 }

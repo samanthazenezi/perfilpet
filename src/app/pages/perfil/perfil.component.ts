@@ -31,16 +31,15 @@ export class PerfilComponent implements OnInit {
   id = this.route.snapshot.paramMap.get("id")
 
   constructor(
-    private http: HttpClient, 
-    private  route: ActivatedRoute, 
+    private http: HttpClient,
+    private  route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
-
-    this.http.get<Perfil>('https://pet-api-5wpg.onrender.com/api/Pet/' + this.id).subscribe( 
+    this.download();
+    this.http.get<Perfil>('https://pet-api-5wpg.onrender.com/api/Pet/' + this.id).subscribe(
       response => {
         this.perfil = response;
-
         this.formPerfil.controls.nome.setValue(this.perfil.nome);
         this.formPerfil.controls.cor.setValue(this.perfil.cor);
         this.formPerfil.controls.dataNascimento.setValue(this.perfil.dataNascimento);
@@ -51,7 +50,7 @@ export class PerfilComponent implements OnInit {
 
         if(this.perfil.castrado == true) {
           this.formPerfil.controls.sim.setValue("Sim")
-        } 
+        }
         else {
           this.formPerfil.controls.não.setValue("Não")
         }
@@ -94,5 +93,16 @@ export class PerfilComponent implements OnInit {
 
   openClose(){
     document.getElementById('modal').classList.toggle('visivel')
+  }
+
+  download(){
+    var url = 'https://pet-api-5wpg.onrender.com/api/Pet/' + this.id + "/download";
+    var preview = document.getElementById("file") as HTMLImageElement;
+
+    this.http.post(url, {}, { responseType: 'text'})
+    .subscribe(
+      sucesso => { preview.src = "data:image/*;base64," + sucesso },
+      erro => { console.log(erro)}
+    )
   }
 }

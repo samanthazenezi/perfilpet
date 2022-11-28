@@ -4,7 +4,7 @@
     <a [routerLink]="['/home']" class="flex items-center">
       <img src="assets/image4.png" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />
       <span class="self-center text-xl text-white font-semibold whitespace-nowrap">Perfil Pet</span>
-    </a>  
+    </a>
   </div>
 </nav>
 
@@ -29,56 +29,53 @@
                   <div class="col-span-6">
                     <label class="block text-sm font-medium text-gray-700">Foto</label>
                     <div class="mt-1 flex items-center">
-                      <span class="inline-block h-12 w-12 overflow-hidden rounded-full bg-gray-100">
-                        <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
-                      </span>
+                      <img id="file" class="inline-block h-12 w-12 overflow-hidden rounded-full"/>
                       <button type="button" class="ml-5 rounded-md bg-pink-500 py-2 px-3 text-sm font-medium leading-4 text-white shadow-sm hover:bg-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">Change</button>
+                      <input type="file" accept="image/*" (change)="showPreview($event)">
                     </div>
                   </div>
-  
+
                   <div class="col-span-6">
                     <label for="email-address" class="block text-sm font-medium text-gray-800">Nome</label>
                     <input formControlName="nome" type="text" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-pink-600 focus:outline-none" id="exampleFormControlInput2"/>
                   </div>
-  
+
                   <div class="col-span-6">
                     <label for="email-address" class="block text-sm font-medium text-gray-800">Espécie</label>
                     <input formControlName="especie" type="text" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-pink-600 focus:outline-none" id="exampleFormControlInput2"/>
                   </div>
-  
+
                   <div class="col-span-6">
                     <label for="email-address" class="block text-sm font-medium text-gray-800">Gênero</label>
                     <input formControlName="genero" type="text" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-pink-600 focus:outline-none" id="exampleFormControlInput2"/>
                   </div>
-  
+
                   <div class="col-span-6">
                     <label for="email-address" class="block text-sm font-medium text-gray-800">Raça</label>
                     <input formControlName="raca" type="text" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-pink-600 focus:outline-none" id="exampleFormControlInput2"/>
                   </div>
-  
+
                   <div class="col-span-6">
                     <label for="email-address" class="block text-sm font-medium text-gray-800">Data de nascimento</label>
                     <input formControlName="dataNasc" type="text" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-pink-600 focus:outline-none" id="exampleFormControlInput2"/>
                   </div>
-  
+
                   <div class="col-span-6">
                     <label for="email-address" class="block text-sm font-medium text-gray-800">Idade</label>
                     <input formControlName="idade" type="text" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-pink-600 focus:outline-none" id="exampleFormControlInput2"/>
                   </div>
-  
+
                   <div class="col-span-6">
                     <label for="email-address" class="block text-sm font-medium text-gray-800">Porte</label>
                     <input formControlName="porte" type="text" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-pink-600 focus:outline-none" id="exampleFormControlInput2"/>
                   </div>
-  
-  
+
+
                   <div class="col-span-6">
                     <label for="email-address" class="block text-sm font-medium text-gray-800">Cor</label>
                     <input formControlName="cor" type="text" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-pink-600 focus:outline-none" id="exampleFormControlInput2"/>
                   </div>
-                  
+
                   <div class="space-y-5">
                     <p class="block text-sm font-medium text-gray-800">Castrado</p>
                     <div class="flex items-center mb-4">
@@ -93,7 +90,7 @@
 
                   <div class="py-5">
                     <button type="submit" class=" text-left inline-flex justify-center rounded-md border border-transparent bg-pink-500 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">Salvar</button>
-                  </div>                  
+                  </div>
                 </form>
               </div>
             </div>
