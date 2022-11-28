@@ -13,6 +13,8 @@ export class PerfilComponent implements OnInit {
 
   perfil: Perfil;
 
+  salvarEdicao = false;
+
 
   formPerfil = new FormGroup({
     nome: new FormControl('', [Validators.required]),
@@ -74,10 +76,13 @@ export class PerfilComponent implements OnInit {
   abrirEdicao(){
     this.formPerfil.enable();
 
+    this.salvarEdicao = true
   }
 
   cancelarEdicao(){
     this.formPerfil.disable();
+    
+    this.salvarEdicao = false
   }
 
   editar(){
@@ -105,4 +110,5 @@ export class PerfilComponent implements OnInit {
       erro => { console.log(erro)}
     )
   }
+
 }

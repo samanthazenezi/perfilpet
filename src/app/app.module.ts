@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './pages/login/login.component';
 import { CadastrarloginComponent } from './pages/cadastrarlogin/cadastrarlogin.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { CadastrarpetComponent } from './pages/cadastrarpet/cadastrarpet.component';
@@ -16,7 +15,6 @@ import { EditarComponent } from './pages/editar/editar.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     CadastrarloginComponent,
     PerfilComponent,
     CadastrarpetComponent,
