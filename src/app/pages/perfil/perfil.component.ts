@@ -67,7 +67,7 @@ export class PerfilComponent implements OnInit {
   deletar(){
     this.http.delete('https://pet-api-5wpg.onrender.com/api/Pet/' + this.id).subscribe(
       sucesso =>{
-      this.router.navigateByUrl('home')
+      this.router.navigateByUrl('/')
       console.log('sucesso!')},
       erro => {console.log('erro!')}
     )

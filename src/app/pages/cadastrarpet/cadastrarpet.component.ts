@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CadastrarPet } from './../../model/cadastrarpet.model';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -27,7 +28,7 @@ export class CadastrarpetComponent implements OnInit {
 
   file = null;
 
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient, private router: Router ) { }
 
   ngOnInit(): void {
   }
@@ -55,6 +56,7 @@ export class CadastrarpetComponent implements OnInit {
 
     this.http.post<Perfil>('https://pet-api-5wpg.onrender.com/api/Pet', body).subscribe( sucess => {
       this.uploadImagem(sucess.id);
+      this.router.navigateByUrl('/');
       this.formCadastroPet.reset();
       console.log('Sucesso!')
     }, error => {
