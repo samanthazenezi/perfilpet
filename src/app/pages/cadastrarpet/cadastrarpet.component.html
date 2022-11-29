@@ -29,9 +29,20 @@
                   <div class="col-span-6">
                     <label class="block text-sm font-medium text-gray-700">Foto</label>
                     <div class="mt-1 flex items-center">
-                      <img id="file" class="inline-block h-12 w-12 overflow-hidden rounded-full"/>
-                      <button type="button" class="ml-5 rounded-md bg-pink-500 py-2 px-3 text-sm font-medium leading-4 text-white shadow-sm hover:bg-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">Change</button>
-                      <input type="file" accept="image/*" (change)="showPreview($event)">
+                      <!-- <img id="file" class="inline-block h-12 w-12 overflow-hidden rounded-full"/>
+                      <div>
+                        <input type="file" accept="image/*" id="file" (change)="showPreview($event)">
+                      </div> -->
+                      <form class="flex items-center space-x-6">
+                        <div class="shrink-0">
+                          <img id="file" class="inline-block h-12 w-12 overflow-hidden rounded-full"/>
+                        </div>
+                        <label class="block">
+                          <span class="sr-only">Escolher foto</span>
+                          <input type="file" accept="image/*" id="file" (change)="showPreview($event)"
+                            class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+                        </label>
+                      </form>
                     </div>
                   </div>
 
@@ -58,11 +69,6 @@
                   <div class="col-span-6">
                     <label for="email-address" class="block text-sm font-medium text-gray-800">Data de nascimento</label>
                     <input formControlName="dataNasc" type="text" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-pink-600 focus:outline-none" id="exampleFormControlInput2"/>
-                  </div>
-
-                  <div class="col-span-6">
-                    <label for="email-address" class="block text-sm font-medium text-gray-800">Idade</label>
-                    <input formControlName="idade" type="text" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-pink-600 focus:outline-none" id="exampleFormControlInput2"/>
                   </div>
 
                   <div class="col-span-6">
